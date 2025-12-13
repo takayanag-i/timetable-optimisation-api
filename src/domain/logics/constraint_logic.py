@@ -6,12 +6,10 @@ def is_enrolled(data: AnnualDataVo, h: str, c: str) -> bool:
     return any(c in lane for block in data.curriculum_dict[h] for lane in block)
 
 
-def get_enrolled_homeroom(data: AnnualDataVo, c: str) -> str:
-    """講座 h を履修している学級を1つ取得する"""
-    return min(
-        (h for h in data.H
-         if is_enrolled(data, h, c))
-    )
+def get_enrolled_homeroom(data: AnnualDataVo, c: str) -> str | None:
+    """講座 c を履修している学級を1つ取得する。該当する学級がない場合はNoneを返す"""
+    enrolled_homerooms = [h for h in data.H if is_enrolled(data, h, c)]
+    return min(enrolled_homerooms) if enrolled_homerooms else None
 
 
 def is_instructor_of_course(data: AnnualDataVo, i: str, c: str) -> bool:

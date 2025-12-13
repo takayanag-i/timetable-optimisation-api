@@ -16,7 +16,7 @@ class CoursesPerDayConstraint(ConstraintApplierBase):
                 model.x[h, d, p, c] for p in model.data.homeroom_day_dict[h][d]
             ) <= self.get_max(c)
             for c in model.data.C
-            if (h := get_enrolled_homeroom(model.data, c))
+            if (h := get_enrolled_homeroom(model.data, c)) is not None
             for d in model.data.homeroom_day_dict[h]
         ]
 
