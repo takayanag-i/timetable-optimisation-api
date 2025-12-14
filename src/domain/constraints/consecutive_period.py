@@ -8,8 +8,8 @@ import math
 class ConsecutivePeriodConstraint(ConstraintApplierBase):
     """2コマ連続開講制約の制約定義クラス。"""
 
-    def __init__(self, course: str):
-        self.course: str = course
+    def __init__(self, courseId: str):
+        self.course: str = courseId
 
     def apply(self, model: AnnualLpModel) -> AnnualLpModel:
 

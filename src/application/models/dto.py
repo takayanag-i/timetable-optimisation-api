@@ -220,7 +220,7 @@ class ConstraintDefinitionDto(BaseModel):
         ..., alias="constraintDefinitionCode", description="制約定義コード", examples=["C001"]
     )
     soft_flag: bool = Field(..., alias="softFlag", description="ソフト制約かどうか")
-    penalty_weight: Optional[int] = Field(None, alias="penaltyWeight", description="ペナルティ重み", examples=[10])
+    penalty_weight: Optional[float] = Field(None, alias="penaltyWeight", description="ペナルティ重み", examples=[0.5])
     parameters: Optional[List[ConstraintParameterDto]] = Field(default_factory=list, description="制約パラメータリスト")
 
     model_config = ConfigDict(
